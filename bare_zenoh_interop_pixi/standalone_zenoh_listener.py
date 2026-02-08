@@ -5,7 +5,9 @@ import rosbags
 from cdr_decoder import CDRStructBase
 
 config = zenoh.Config.from_file("config.json5")
+print("Opening zenoh session")
 with zenoh.open(config) as session:
-    with session.declare_subscriber("demo/example/**") as subscriber:
+    print("Declaring subscriber for chatter")
+    with session.declare_subscriber("chatter/**") as subscriber:
         for sample in subscriber:
             print(f"{sample.key_expr} => {sample.payload.to_string()}")
