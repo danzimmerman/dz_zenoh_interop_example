@@ -1,6 +1,8 @@
 # ...existing code...
 
 from typing import List, Tuple, Sequence
+from dataclasses import fields, dataclass
+
 
 # CDR string type
 @dataclass
@@ -69,7 +71,6 @@ def cdr_deserialize_array(data: bytes, elem_type: Any, length: int) -> Tuple[CDR
 
 # ...existing code...
 
-from dataclasses import fields
 
 class CDRStructBase:
 	"""
