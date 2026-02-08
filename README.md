@@ -4,8 +4,8 @@ Project inspired by [Letting Python Be Python: Should ROS 2 be less strict with 
 
 There are two Pixi projects here:
 
-- `bare_zenoh_interop_pixi` - A simple Python listener that doesn't use ROS
-- `ros_jazzy_core_pixi` - A basic Robostack ROS 2 Jazzy core 
+- `bare_zenoh_interop_pixi` - A simple Python listener that doesn't use ROS, running with Python 3.14
+- `ros_jazzy_core_pixi` - A basic Robostack ROS 2 Jazzy core, running with Python 3.12
 
 ## Instructions - Running
 
