@@ -6,12 +6,14 @@ from rosbags.typesys import Stores, get_typestore
 jazzy_typestore = get_typestore(Stores.ROS2_JAZZY)
 
 def sample_callback(sample):
-    # msg_str = stdMsgString.deserialize(sample.payload)
-    received_msg = jazzy_typestore.deserialize_cdr(
-        sample.payload.to_bytes(), "std_msgs/msg/String"
-    )
-    print("Type of received_msg:", type(received_msg))
-    print(f"{sample.key_expr} => {str(received_msg.data)}")
+    if str(sample.key_expr).count("String"):
+        received_msg = jazzy_typestore.deserialize_cdr(
+            sample.payload.to_bytes(), "std_msgs/msg/String"
+        )
+        print(f"{sample.key_expr} => {str(received_msg.data)}")
+    else:
+        pass
+        #print(f"Received sample on {sample.key_expr}, but don't know how to deserialize it.")
 
 
 config = zenoh.Config.from_file("config.json5")
