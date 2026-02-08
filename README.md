@@ -19,6 +19,11 @@ In one, run:
 # terminal 1 ros_jazzy_core_pixi
 cd ~/dz_zenoh_interop_example/ros_jazzy_core_pixi
 pixi shell
+```
+
+Then run 
+
+```
 ros2 run rmw_zenoh_cpp rmw_zenohd -c router_config.json5
 ```
 
@@ -28,6 +33,11 @@ In another, run:
 # terminal 2 ros_jazzy_core_pixi
 cd ~/dz_zenoh_interop_example/ros_jazzy_core_pixi
 pixi shell
+```
+
+Then run 
+
+```
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ros2 run demo_nodes_cpp talker
 ```
@@ -38,6 +48,11 @@ Just to make sure things are running right in a basic way in ROS 2, get a third 
 # terminal 3 ros_jazzy_core_pixi
 cd ~/dz_zenoh_interop_example/ros_jazzy_core_pixi
 pixi shell
+```
+
+Then run
+
+```
 export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ros2 run demo_nodes_cpp listener
 ```
@@ -49,5 +64,10 @@ In a fourth terminal,
 ```
 cd ~/bare_zenoh_interop_pixi
 pixi shell
+```
+
+Then run:
+
+```
 python standalone_zenoh_listener.py
 ```
