@@ -6,7 +6,7 @@ from rosbags.typesys import Stores, get_typestore
 jazzy_typestore = get_typestore(Stores.ROS2_JAZZY)
 
 def decoder_callback(sample):
-    if str(sample.key_expr).count("String"):
+    if str(sample.key_expr).count("/chatter"):
         received_msg = jazzy_typestore.deserialize_cdr(
             sample.payload.to_bytes(), "std_msgs/msg/String"
         )
