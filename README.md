@@ -71,3 +71,49 @@ Then run:
 ```
 python standalone_zenoh_listener.py
 ```
+
+## Expected Output
+
+In the router terminal, you should see something like:
+
+```bash
+(ros_jazzy_core_pixi) dan@computer:~/dz_zenoh_interop_example/ros_jazzy_core_pixi$ ros2 run rmw_zenoh_cpp rmw_zenohd -c router_config.json5 
+2026-02-08T21:44:06.888275Z  INFO ThreadId(02) zenoh::net::runtime: Using ZID: 1211239493be77c1f82ea0a23a8e3b72
+2026-02-08T21:44:06.888638Z  INFO ThreadId(02) zenoh::net::runtime::orchestrator: Zenoh can be reached at: tcp/[fe80::1192:20bf:ff05:52d2]:7447
+2026-02-08T21:44:06.888647Z  INFO ThreadId(02) zenoh::net::runtime::orchestrator: Zenoh can be reached at: tcp/192.168.1.45:7447
+Started Zenoh router with id 1211239493be77c1f82ea0a23a8e3b72
+
+```
+
+In the talker terminal, you should see:
+
+```bash
+(ros_jazzy_core_pixi) dan@computer:~/dz_zenoh_interop_example/ros_jazzy_core_pixi$ ros2 run demo_nodes_cpp talker
+[INFO] [1770589218.288734705] [talker]: Publishing: 'Hello World: 1'
+[INFO] [1770589219.288629702] [talker]: Publishing: 'Hello World: 2'
+[INFO] [1770589220.288787972] [talker]: Publishing: 'Hello World: 3'
+[INFO] [1770589221.288783403] [talker]: Publishing: 'Hello World: 4'
+[INFO] [1770589222.288772009] [talker]: Publishing: 'Hello World: 5'
+[INFO] [1770589223.288781210] [talker]: Publishing: 'Hello World: 6'
+[INFO] [1770589224.288648208] [talker]: Publishing: 'Hello World: 7'
+```
+
+In the listener terminal, you should see something like:
+
+```bash
+(bare_zenoh_interop_pixi) dan@computer:~/dz_zenoh_interop_example/bare_zenoh_interop_pixi$ python standalone_zenoh_listener.py
+Opening Zenoh session
+Zenoh session info:
+  - Routers zids:[1211239493be77c1f82ea0a23a8e3b72]
+
+
+Declaring subscriber for arbitrary key expressions
+17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 1
+17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 2
+17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 3
+17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 4
+17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 5
+17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 6
+17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 7
+
+```
