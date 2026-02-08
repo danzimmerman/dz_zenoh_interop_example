@@ -62,7 +62,7 @@ Now run the listener.
 In a fourth terminal, 
 
 ```
-cd ~/bare_zenoh_interop_pixi
+cd ~/dz_zenoh_interop_example/bare_zenoh_interop_pixi
 pixi shell
 ```
 
