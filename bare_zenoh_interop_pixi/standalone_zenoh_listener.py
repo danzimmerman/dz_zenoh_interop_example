@@ -5,7 +5,7 @@ from rosbags.typesys import Stores, get_typestore
 
 jazzy_typestore = get_typestore(Stores.ROS2_JAZZY)
 
-def sample_callback(sample):
+def decoder_callback(sample):
     if str(sample.key_expr).count("String"):
         received_msg = jazzy_typestore.deserialize_cdr(
             sample.payload.to_bytes(), "std_msgs/msg/String"
@@ -17,10 +17,10 @@ def sample_callback(sample):
 
 
 config = zenoh.Config.from_file("config.json5")
-print("Opening zenoh session")
+print("Opening Zenoh session")
 
 session = zenoh.open(config)
 session_info = session.info
-print(f"Session info:\n  - Routers zids:{[zid for zid in session_info.routers_zid()]}")
-print("Declaring subscriber for any sample")
-subscriber = session.declare_subscriber("**", sample_callback)
+print(f"Zenoh session info:\n  - Routers zids:{[zid for zid in session_info.routers_zid()]}\n\n")
+print("Declaring subscriber for arbitrary key expressions")
+subscriber = session.declare_subscriber("**", decoder_callback)
