@@ -1,10 +1,7 @@
 # Kind of following https://zenoh.io/blog/2021-04-28-ros2-integration/
 # But trying rosbags.serde instead of yanked pycdr
 import zenoh
-from cdr_decoder import CDRStructBase
-
-class stdMsgString(CDRStructBase):
-    value: str
+import rosbags
 
 config = zenoh.Config.from_file("config.json5")
 print("Opening zenoh session")
@@ -12,6 +9,7 @@ print("Opening zenoh session")
 
 def sample_callback(sample):
     # msg_str = stdMsgString.deserialize(sample.payload)
+    rosbags.serde.deserialize(sample.payload, "std_msgs/msg/String")
     print(f"{sample.key_expr} => {sample.payload.to_string()}")
 
 session = zenoh.open(config)
