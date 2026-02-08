@@ -117,3 +117,5 @@ Declaring subscriber for arbitrary key expressions
 17/chatter/std_msgs::msg::dds_::String_/RIHS01_df668c740482bbd48fb39d76a70dfd4bd59db1288021743503259e948f6b1a18 => Hello World: 7
 
 ```
+
+💡 Note that 17 is my `ROS_DOMAIN_ID` so it looks like that should be predictable even if the message hash is verbose and obscure.
