@@ -13,5 +13,5 @@ def sample_callback(sample):
 session = zenoh.open(config)
 session_info = session.info
 print(f"Session info:\n  - Routers zids:{[zid for zid in session_info.routers_zid()]}")
-print("Declaring subscriber for chatter")
-subscriber = session.declare_subscriber("chatter", sample_callback)
+print("Declaring subscriber for any sample")
+subscriber = session.declare_subscriber("**", sample_callback)
