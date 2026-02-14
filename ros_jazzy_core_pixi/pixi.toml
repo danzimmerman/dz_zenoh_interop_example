@@ -7,6 +7,9 @@ version = "0.1.0"
 
 [tasks]
 
+[activation.env]
+RMW_IMPLEMENTATION = "rmw_zenoh_cpp"
+
 [dependencies]
 ros-jazzy-ros-core = ">=0.11.0,<0.12"
 ros-jazzy-rmw-zenoh-cpp = ">=0.2.9,<0.3"

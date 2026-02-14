@@ -38,9 +38,10 @@ pixi shell
 Then run 
 
 ```
-export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ros2 run demo_nodes_cpp talker
 ```
+
+💡 Note that I set the env variable `RMW_IMPLEMENTATION` to `rmw_zenoh_cpp` using the `[activation.env]` section in `pixi.toml`. 
 
 Just to make sure things are running right in a basic way in ROS 2, get a third terminal with the `ros_jazzy_core_pixi` env and run:
 
@@ -53,7 +54,6 @@ pixi shell
 Then run
 
 ```
-export RMW_IMPLEMENTATION=rmw_zenoh_cpp
 ros2 run demo_nodes_cpp listener
 ```
 
